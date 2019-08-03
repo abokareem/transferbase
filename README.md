@@ -24,14 +24,19 @@ cd transferbase
 ```bash
 docker-compose up -d
 docker-compose ps # Check for any errors
-docker-compose run --rm app rails db:create
-docker-compose run --rm app rails db:migrate
-docker-compose run --rm app rails db:seed # For possibly available seed data
+docker-compose run --rm app bin/rails db:create
+docker-compose run --rm app bin/rails db:migrate
+docker-compose run --rm app bin/rails db:seed # For possibly available seed data
 ```
 
 ## Application Up and Running
 
 Access the application web page by typing `http://localhost:3000` to a web browser.
+
+## Confirmation Emails
+
+Application uses (only on development environment) `letter_opener_gem` in order to see a the confirmation emails.
+To use it, after sign up, go to `http://localhost:3000/leer_opener` page to confirm your registration.
 
 
 ## Running Tests
@@ -53,6 +58,6 @@ Then open the generated `coverage/index.html` in your browser.
 [Rubocop](https://github.com/bbatsov/rubocop) is used to lint the code.
 
 ```bash
-$ docker-compose run --rm app rubocop
+$ docker-compose run --rm app bundle exec rubocop
 ```
 
