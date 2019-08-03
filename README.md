@@ -1,24 +1,34 @@
-# README
+# Transferbase
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Transferbse is a web based application for transferring money between user accounts easily and by using different currencies.
 
-Things you may want to cover:
+## System Dependencies
 
-* Ruby version
+You will need the following things properly installed on your computer.
 
-* System dependencies
+* [Git](https://git-scm.com/)
+* [Docker CE](https://www.docker.com/community-edition#/download)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 
-* Configuration
+## Getting Started
 
-* Database creation
+Clone the repository:
 
-* Database initialization
+```bash
+git clone git@github.com:kenan-memis/transferbase.git
+cd transferbase
+```
 
-* How to run the test suite
+## Development
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+docker-compose up -d
+docker-compose ps # Check for any errors
+docker-compose run --rm app rails db:create
+docker-compose run --rm app rails db:migrate
+docker-compose run --rm app rails db:seed # For possibly available seed data
+```
 
-* Deployment instructions
+## Application Up and Running
 
-* ...
+Access the application web page by typing `http://localhost:3000` to a web browser.
