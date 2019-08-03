@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+  app:
+    build: .
+    command: bundle exec rails s -b 0.0.0.0
+    env_file:
+      - ./compose/rails.env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - bundle:/bundle
+      - .:/myapp
+  db:
+    image: postgres
+    ports:
+    - '54320:5432'
+    env_file:
+    - ./compose/postgres.env
+    volumes:
+    - "/var/lib/postgresql"
+
+volumes:
+  bundle:
