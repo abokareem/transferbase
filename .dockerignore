@@ -1,0 +1,9 @@
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+coverage
+spec
+compose
+Dockerfile*
+docker-compose.yml
