@@ -32,3 +32,27 @@ docker-compose run --rm app rails db:seed # For possibly available seed data
 ## Application Up and Running
 
 Access the application web page by typing `http://localhost:3000` to a web browser.
+
+
+## Running Tests
+As the test suit, the application uses [RSpec](https://rspec.info/). You can run the tests with the following command:
+
+```
+$ docker-compose run --rm app bundle exec rspec
+``` 
+
+## Code Coverage
+
+Code coverage is available via [SimpleCov](https://github.com/colszowka/simplecov).
+When the test suit is running, code coverage report is automatically generated under `coverage/index.html` file.
+Then open the generated `coverage/index.html` in your browser.
+
+
+## Linting
+
+[Rubocop](https://github.com/bbatsov/rubocop) is used to lint the code.
+
+```bash
+$ docker-compose run --rm app rubocop
+```
+
