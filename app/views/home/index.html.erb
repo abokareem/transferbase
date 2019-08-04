@@ -1,2 +1,22 @@
-<h1>Dashboard</h1>
-<p><%= current_user.name %></p>
+<h1>My Transactions</h1>
+
+<table>
+  <thead>
+  <th>ID</th>
+  <th>Sender</th>
+  <th>Receiver</th>
+  <th>Amount</th>
+  <th>Currency</th>
+  <th>Created At</th>
+  </thead>
+  <tbody>
+  <% @transfers.each do |transfer| %>
+    <td><%= transfer.id %></td>
+    <td><%= transfer.sender&.name %></td>
+    <td><%= transfer.receiver.name %></td>
+    <td><%= display_amount(transfer.amount, transfer.receiver, current_user) %></td>
+    <td><%= transfer.target_currency %></td>
+    <td><%= transfer.created_at %></td>
+  <% end %>
+  </tbody>
+</table>
