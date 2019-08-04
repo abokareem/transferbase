@@ -6,10 +6,6 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'
 
-SimpleCov.start 'rails' do
-  add_filter '.bundler'
-end
-
 require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
@@ -28,6 +24,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include RequestStubs
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.infer_spec_type_from_file_location!

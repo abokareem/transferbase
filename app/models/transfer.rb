@@ -5,8 +5,8 @@ class Transfer < ApplicationRecord
   SUCCESS = 2
 
   STATUSES = [
-    [FAILURE, 'Failure'],
-    [SUCCESS, 'Success']
+    [FAILURE, 'Cancelled'],
+    [SUCCESS, 'Completed']
   ].freeze
 
   belongs_to :sender, class_name: 'User', optional: true

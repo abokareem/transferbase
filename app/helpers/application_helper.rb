@@ -8,4 +8,8 @@ module ApplicationHelper
       "<span class='red'>-#{amount}</span>".html_safe
     end
   end
+
+  def transaction_status(status)
+    Transfer::STATUSES.to_h[status]
+  end
 end
