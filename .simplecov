@@ -1,5 +1,6 @@
 SimpleCov.start 'rails' do
   add_filter '.bundler'
+  add_filter '/app/controllers/application_controller.rb'
   add_filter '/app/controllers/users/confirmations_controller.rb'
   add_filter '/app/controllers/users/registrations_controller.rb'
   add_filter '/app/controllers/users/sessions_controller.rb'

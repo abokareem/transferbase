@@ -1,5 +1,9 @@
 <h1>My Transactions</h1>
 
+<button>
+  <%= link_to 'New Transaction', new_transfer_path %>
+</button>
+
 <table>
   <thead>
   <th>ID</th>
@@ -8,15 +12,19 @@
   <th>Amount</th>
   <th>Currency</th>
   <th>Created At</th>
+  <th>Status</th>
   </thead>
   <tbody>
   <% @transfers.each do |transfer| %>
-    <td><%= transfer.id %></td>
-    <td><%= transfer.sender&.name %></td>
-    <td><%= transfer.receiver.name %></td>
-    <td><%= display_amount(transfer.amount, transfer.receiver, current_user) %></td>
-    <td><%= transfer.target_currency %></td>
-    <td><%= transfer.created_at %></td>
+    <tr>
+      <td><%= transfer.id %></td>
+      <td><%= transfer.sender&.name %></td>
+      <td><%= transfer.receiver.name %></td>
+      <td><%= display_amount(transfer.amount, transfer.receiver, current_user) %></td>
+      <td><%= transfer.target_currency %></td>
+      <td><%= transfer.created_at %></td>
+      <td><%= transaction_status(transfer.status) %></td>
+    </tr>
   <% end %>
   </tbody>
 </table>
