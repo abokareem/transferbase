@@ -31,4 +31,9 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'associations' do
+    it { should have_many(:outgoing_transfers).dependent(:destroy) }
+    it { should have_many(:incoming_transfers).dependent(:destroy) }
+  end
 end
