@@ -10,11 +10,22 @@ RSpec.describe 'Home Features', type: :feature do
     sign_in @user
   end
 
-  scenario 'home page contains logged in user name and title `My Transactions`' do
-    visit root_path
+  context 'home page contains' do
+    before(:each) do
+      visit root_path
+    end
 
-    expect(page).to have_text('Foo Bar')
-    expect(page).to have_text('My Transactions')
+    it 'logged in user name' do
+      expect(page).to have_text('Foo Bar')
+    end
+
+    it 'title `My Transactions`' do
+      expect(page).to have_text('My Transactions')
+    end
+
+    it '`New Transaction` button' do
+      expect(page).to have_button('New Transaction')
+    end
   end
 
   scenario 'A newly registered (confirmed) user has the initial +1000 USD in his/her transactions' do

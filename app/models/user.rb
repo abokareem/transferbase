@@ -8,12 +8,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  # A method to get all user related transfers (whether it is sent or received)
   def transfers
     Transfer.where('sender_id = ? OR receiver_id = ?', id, id)
   end
 
   protected
 
+  # Overwrite devise's `after_confirmation` method to generate the initial +1000 USD
+  # right after a user is confirmed.
   def after_confirmation
     Transfer.create(
       receiver: self,
