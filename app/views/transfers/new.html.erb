@@ -1,0 +1,32 @@
+<h2>New Transaction</h2>
+
+<%= form_for(@transfer) do |f| %>
+  <% if @transfer.errors.any? %>
+    <ul>
+      <% @transfer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.hidden_field :source_currency, value: 'USD' %>
+
+  <div>
+    <%= f.label :receiver_id %>
+    <%= f.select :receiver_id, User.where.not(id: current_user.id).collect { |u| [u.name, u.id] }, { include_blank: true } %>
+  </div>
+
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+
+  <div>
+    <%= f.label :target_currency %>
+    <%= f.select :target_currency, %w[USD EUR GBP], { include_blank: true } %>
+  </div>
+
+  <div>
+    <button type="submit">Create</button>
+  </div>
+<% end %>
