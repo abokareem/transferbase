@@ -12,37 +12,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_804_081_805) do
+ActiveRecord::Schema.define(version: 20190804081805) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'transfers', force: :cascade do |t|
-    t.bigint 'sender_id'
-    t.bigint 'receiver_id'
-    t.decimal 'amount', null: false
-    t.string 'source_currency', null: false
-    t.string 'target_currency', null: false
-    t.decimal 'exchange_rate', null: false
-    t.integer 'status', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['receiver_id'], name: 'index_transfers_on_receiver_id'
-    t.index ['sender_id'], name: 'index_transfers_on_sender_id'
+  create_table "transfers", force: :cascade do |t|
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.decimal "amount", null: false
+    t.string "source_currency", null: false
+    t.string "target_currency", null: false
+    t.decimal "exchange_rate", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_transfers_on_receiver_id"
+    t.index ["sender_id"], name: "index_transfers_on_sender_id"
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'confirmation_token'
-    t.datetime 'confirmed_at'
-    t.datetime 'confirmation_sent_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
-    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.string "name", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key 'transfers', 'users', column: 'receiver_id'
-  add_foreign_key 'transfers', 'users', column: 'sender_id'
+  add_foreign_key "transfers", "users", column: "receiver_id"
+  add_foreign_key "transfers", "users", column: "sender_id"
 end

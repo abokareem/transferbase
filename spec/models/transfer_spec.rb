@@ -48,7 +48,7 @@ RSpec.describe Transfer, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to(:sender) }
+    it { should belong_to(:sender).optional }
     it { should belong_to(:receiver) }
   end
 end
