@@ -5,3 +5,19 @@
 .red {
   color: #cd0a0a;
 }
+
+.float-right {
+  float: right !important;
+
+  .row > & {
+    margin-left: auto !important;
+  }
+}
+
+.m-t-40 {
+  margin-top: 40px;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}

@@ -12,4 +12,8 @@ module ApplicationHelper
   def transaction_status(status)
     Transfer::STATUSES.to_h[status]
   end
+
+  def formatted_date(date)
+    date.strftime('%B %-d, %Y %H:%M')
+  end
 end

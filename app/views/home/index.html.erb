@@ -1,10 +1,10 @@
-<h1>My Transactions</h1>
+<h2>My Transactions</h2>
 
-<button>
-  <%= link_to 'New Transaction', new_transfer_path %>
-</button>
+<div class="float-right m-b-15">
+  <%= link_to 'New Transaction', new_transfer_path, class: 'btn btn-primary' %>
+</div>
 
-<table>
+<table class="table table-striped">
   <thead>
   <th>ID</th>
   <th>Sender</th>
@@ -22,7 +22,7 @@
       <td><%= transfer.receiver.name %></td>
       <td><%= display_amount(transfer.amount, transfer.receiver, current_user) %></td>
       <td><%= transfer.target_currency %></td>
-      <td><%= transfer.created_at %></td>
+      <td><%= formatted_date(transfer.created_at) %></td>
       <td><%= transaction_status(transfer.status) %></td>
     </tr>
   <% end %>
