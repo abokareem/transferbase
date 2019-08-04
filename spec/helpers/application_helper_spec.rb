@@ -31,4 +31,11 @@ RSpec.describe ApplicationHelper do
       expect(transaction_status(transfer.status)).to eq('Cancelled')
     end
   end
+
+  describe '#formatted_date' do
+    it 'displays formatted date for created transactions' do
+      date = DateTime.new(2019, 8, 4, 13, 17)
+      expect(formatted_date(date)).to eq('August 4, 2019 13:17')
+    end
+  end
 end

@@ -24,7 +24,7 @@ RSpec.describe 'Home Features', type: :feature do
     end
 
     it '`New Transaction` button' do
-      expect(page).to have_button('New Transaction')
+      expect(page).to have_link('New Transaction')
     end
   end
 

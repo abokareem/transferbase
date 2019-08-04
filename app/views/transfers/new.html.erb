@@ -1,32 +1,46 @@
 <h2>New Transaction</h2>
 
-<%= form_for(@transfer) do |f| %>
+<%= form_for(@transfer,  html: { class: 'form-horizontal m-t-40' }) do |f| %>
   <% if @transfer.errors.any? %>
-    <ul>
-      <% @transfer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="form-group has-error">
+      <label class="col-lg-2 col-form-label"></label>
+      <div class="col-lg-10">
+        <ul class="list-group">
+          <% @transfer.errors.full_messages.each do |msg| %>
+            <li class="list-group-item list-group-item-danger"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   <% end %>
 
   <%= f.hidden_field :source_currency, value: 'USD' %>
 
-  <div>
-    <%= f.label :receiver_id %>
-    <%= f.select :receiver_id, User.where.not(id: current_user.id).collect { |u| [u.name, u.id] }, { include_blank: true } %>
+  <div class="form-group row">
+    <label class="col-lg-2 col-form-label" for="receiver_id">Receiver</label>
+    <div class="col-lg-10">
+      <%= f.select :receiver_id, User.where.not(id: current_user.id).collect { |u| [u.name, u.id] }, { include_blank: true }, { class: 'form-control m-b' } %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
+  <div class="form-group row">
+    <label class="col-lg-2 col-form-label" for="amount">Amount</label>
+    <div class="col-lg-10">
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :target_currency %>
-    <%= f.select :target_currency, %w[USD EUR GBP], { include_blank: true } %>
+  <div class="form-group row">
+    <label class="col-lg-2 col-form-label" for="target_currency">Currency</label>
+    <div class="col-lg-10">
+      <%= f.select :target_currency, %w[USD EUR GBP], { include_blank: true }, { class: 'form-control m-b' } %>
+    </div>
   </div>
 
-  <div>
-    <button type="submit">Create</button>
+  <div class="form-group row">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button class="btn btn-success" type="submit">Create</button>
+      <%= link_to 'Cancel', root_path, class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
