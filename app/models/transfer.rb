@@ -18,7 +18,7 @@ class Transfer < ApplicationRecord
   validates :exchange_rate, presence: true
   validates :status, inclusion: { in: STATUSES.to_h.keys }
 
-  scope :completed, ->{ where(status: SUCCESS) }
+  scope :completed, -> { where(status: SUCCESS) }
 
   class << self
     def current_balance(user)
