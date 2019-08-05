@@ -1,6 +1,6 @@
 # Transferbase
 
-Transferbse is a web based application for transferring money between user accounts easily and by using different currencies.
+Transferbase is a web based application for transferring money between user accounts easily and by using different currencies.
 
 ## System Dependencies
 
