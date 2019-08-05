@@ -20,7 +20,7 @@ module ApplicationHelper
   def display_current_balance(balance)
     content_tag :div, class: 'panel panel-info' do
       content_tag :div, class: 'panel-body' do
-        "Current Balance: #{balance['USD']} USD, #{balance['EUR']} EUR, #{balance['GBP']} GBP"
+        "<b>Current Balance</b>: #{balance['USD']} USD, #{balance['EUR']} EUR, #{balance['GBP']} GBP".html_safe
       end
     end
   end
