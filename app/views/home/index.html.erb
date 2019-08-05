@@ -1,5 +1,7 @@
 <h2>My Transactions</h2>
 
+<%= display_current_balance(@current_balance) %>
+
 <div class="float-right m-b-15">
   <%= link_to 'New Transaction', new_transfer_path, class: 'btn btn-primary' %>
 </div>

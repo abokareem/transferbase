@@ -17,4 +17,24 @@ class Transfer < ApplicationRecord
   validates :target_currency, presence: true
   validates :exchange_rate, presence: true
   validates :status, inclusion: { in: STATUSES.to_h.keys }
+
+  scope :completed, ->{ where(status: SUCCESS) }
+
+  class << self
+    def current_balance(user)
+      result = { 'USD' => 0, 'EUR' => 0, 'GBP' => 0 }
+      user.transfers.completed.group_by(&:target_currency).each do |currency, data|
+        data.each do |transfer|
+          if transfer.receiver == user
+            result[currency] += transfer.amount
+          else
+            result[currency] -= transfer.amount
+          end
+        end
+        result.values.map(&:to_f)
+      end
+
+      result
+    end
+  end
 end
