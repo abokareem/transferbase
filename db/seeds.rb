@@ -7,16 +7,5 @@ if User.count.zero? && !Rails.env.production?
 
     user1.confirm
     user2.confirm
-
-    [user1, user2].each do |receiver|
-      Transfer.create(
-        receiver: receiver,
-        amount: 1_000.0,
-        source_currency: 'USD',
-        target_currency: 'USD',
-        exchange_rate: 1.0,
-        status: Transfer::SUCCESS
-      )
-    end
   end
 end
