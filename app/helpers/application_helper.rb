@@ -24,4 +24,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def display_status(status)
+    if status == 'Cancelled'
+      "<span class='red'>#{status}</span>".html_safe
+    else
+      status
+    end
+  end
 end
