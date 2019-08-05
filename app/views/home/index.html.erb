@@ -25,7 +25,7 @@
       <td><%= display_amount(transfer.amount, transfer.receiver, current_user) %></td>
       <td><%= transfer.target_currency %></td>
       <td><%= formatted_date(transfer.created_at) %></td>
-      <td><%= transaction_status(transfer.status) %></td>
+      <td><%= display_status(transaction_status(transfer.status)) %></td>
     </tr>
   <% end %>
   </tbody>

@@ -38,4 +38,16 @@ RSpec.describe ApplicationHelper do
       expect(formatted_date(date)).to eq('August 4, 2019 13:17')
     end
   end
+
+  describe '#display_status' do
+    it 'displays cancelled status in red color' do
+      status = 'Cancelled'
+      expect(display_status(status)).to eq("<span class='red'>Cancelled</span>")
+    end
+
+    it 'displays cancelled status in red color' do
+      status = 'Completed'
+      expect(display_status(status)).to eq('Completed')
+    end
+  end
 end
