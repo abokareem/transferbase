@@ -36,7 +36,7 @@ Access the application web page by typing `http://localhost:3000` to a web brows
 ## Confirmation Emails
 
 Application uses (only on development environment) `letter_opener_gem` in order to see a the confirmation emails.
-To use it, after sign up, go to `http://localhost:3000/leer_opener` page to confirm your registration.
+To use it, after sign up, go to `http://localhost:3000/leter_opener` page to confirm your registration.
 
 
 ## Running Tests
